@@ -1,0 +1,20 @@
+version: "3.5"
+services:
+  conversao-temperatura:
+    build:
+      context: ${SERVER_DOCKERFILE:-./docker/node}
+    container_name: aula-1
+    stdin_open: true 
+    tty: true 
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8001:80"
+    networks:
+      - iniciativa-devops
+
+networks:
+  iniciativa-devops:
+    name: iniciativa-devops
+    driver: bridge
